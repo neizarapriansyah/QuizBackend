@@ -46,8 +46,8 @@ akan mereset semua data `claimed` kembali ke 0.
 
 ## 1. Gacha
 
+### POST `http://localhost:5000/api/gacha`
 - Melakukan gacha untuk user
-POST `http://localhost:5000/api/gacha`
 
 Request Body (JSON):
 
@@ -56,12 +56,14 @@ Request Body (JSON):
 }
 
 Response:
+
 {
   "status": "Win!" | "Lose!",
   "reward": "string | null"
 }
 
 Error Response (jika limit tercapai):
+
 HTTP 429
 {
   "message": "Limit 5x per hari"
@@ -69,13 +71,14 @@ HTTP 429
 
 ## 2. History Gacha
 
+### GET `http://localhost:5000/api/gacha/history/:userId`
 - Menampilkan riwayat gacha user
-GET `http://localhost:5000/api/gacha/history/:userId`
 
 Parameter:
 userId (path) → ObjectId user
 
 Response:
+
 {
 	"total": 2,
 	"history": [
@@ -94,10 +97,11 @@ Response:
 
 ## 3. Limit Gacha
 
+### GET `http://localhost:5000/api/gacha/limit/:userId`
 - Menampilkan jumlah penggunaan gacha
-GET `http://localhost:5000/api/gacha/limit/:userId`
 
 Response:
+
 {
 	"today": 0,
 	"remaining": 5
@@ -105,10 +109,11 @@ Response:
 
 ## 4. Daftar Hadiah & Sisa Kuota
 
+### GET `http://localhost:5000/api/gacha/rewards`
 - Menampilkan semua hadiah beserta kuota
-GET `http://localhost:5000/api/gacha/rewards`
 
 Response:
+
 {
 	"total": 5,
 	"rewards": [
@@ -147,10 +152,11 @@ Response:
 
 ## 5. Daftar Pemenang (Masked)
 
+### GET `http://localhost:5000/api/gacha/winners`
 - Menampilkan daftar user yang menang
-GET `http://localhost:5000/api/gacha/winners`
 
 Response:
+
 {
 	"total": 2,
 	"winners": [
